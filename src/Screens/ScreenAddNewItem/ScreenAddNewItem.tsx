@@ -7,14 +7,14 @@ import { StudentForm } from './Utils/types';
 import { studentFormInitialValues, studentFormNames } from './Utils/constants';
 import validationSchema from './Utils/formSchema';
 import {yupResolver} from '@hookform/resolvers/yup';
-import { insertSudents } from '../../Utils/UtilityMethods';
+import { insertStudents } from '../../Utils/UtilityMethods';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamlist } from '../../Navigator/Constants/RootStackParamLists';
 
 function ScreenAddNewItem({navigation}: NativeStackScreenProps<RootStackParamlist>) {
   const { control, handleSubmit, formState: { errors } } = useForm<StudentForm>({defaultValues: studentFormInitialValues, resolver: yupResolver(validationSchema)});
   const onSubmit = (data: StudentForm) => {
-    insertSudents(data);
+    insertStudents(data);
     console.log(data);
     navigation.goBack();
   };

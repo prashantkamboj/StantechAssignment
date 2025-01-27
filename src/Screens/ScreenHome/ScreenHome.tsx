@@ -4,7 +4,7 @@ import { styles } from './StyleHome';
 import ComponentHeader from '../../CommonComponents/ComponentHeader/ComponentHeader';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackNames, RootStackParamlist } from '../../Navigator/Constants/RootStackParamLists';
-import { getSudents } from '../../Utils/UtilityMethods';
+import { getStudents } from '../../Utils/UtilityMethods';
 import { useFocusEffect } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/roorReducer';
@@ -16,7 +16,7 @@ function ScreenHome({ navigation }: NativeStackScreenProps<RootStackParamlist>) 
     navigation.navigate(RootStackNames.screenAddNewItem);
   };
   const dataFromDataBase = () => {
-    getSudents();
+    getStudents();
   };
 
   useFocusEffect(useCallback(() => {

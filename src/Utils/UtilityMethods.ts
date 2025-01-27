@@ -30,7 +30,7 @@ export const createInitialyTable = () => {
 
 
 // For getting students
-export const getSudents = () => {
+export const getStudents = () => {
     const database = DatabaseInstance.getInstance();
   const db = database.getDatabase();
    db.transaction(tx => {
@@ -43,7 +43,7 @@ export const getSudents = () => {
         store.dispatch(setStudents(data));
       },
       (_, error) => {
-        console.error('Error creating table:', error);
+        console.error('Error getting data:', error);
       },
     );
   });
@@ -51,7 +51,7 @@ export const getSudents = () => {
 };
 
 // For inserting students
-export const insertSudents = (students: Student) => {
+export const insertStudents = (students: Student) => {
     const database = DatabaseInstance.getInstance();
   const db = database.getDatabase();
   db.transaction(tx => {
@@ -59,17 +59,17 @@ export const insertSudents = (students: Student) => {
       'INSERT INTO students (name, age, marks, city) VALUES (?, ?, ?, ?);',
       [students.name, students.age, students.marks, students.city],
       (_, result) => {
-        console.log('Table created successfully:', result);
+        console.log('Insert Data  successfully:', result);
       },
       (_, error) => {
-        console.error('Error creating table:', error);
+        console.error('Error inserting Data:', error);
       },
     );
   });
 };
 
 // For updating students
-export const updateSudents = (students: Student) => {
+export const updateStudents = (students: Student) => {
     const database = DatabaseInstance.getInstance();
   const db = database.getDatabase();
   db.transaction(tx => {
@@ -77,17 +77,17 @@ export const updateSudents = (students: Student) => {
       'UPDATE students SET name = ?, age = ?, marks = ?, city = ? WHERE id = ?;',
       [students.name, students.age, students.marks, students.city, students.id],
       (_, result) => {
-        console.log('Table created successfully:', result);
+        console.log('Updated Student successfully:', result);
       },
       (_, error) => {
-        console.error('Error creating table:', error);
+        console.error('Error Updating Student:', error);
       },
     );
   });
 };
 
 // For deleting student
-export const deleteSudents = (id: number) => {
+export const deleteStudents = (id: number) => {
     const database = DatabaseInstance.getInstance();
   const db = database.getDatabase();
   db.transaction(tx => {
@@ -95,11 +95,11 @@ export const deleteSudents = (id: number) => {
       'DELETE FROM students WHERE id = ?;',
       [id],
       (_, result) => {
-        console.log('Table created successfully:', result);
-        getSudents();
+        console.log('Student Deleted successfully:', result);
+        getStudents();
       },
       (_, error) => {
-        console.error('Error creating table:', error);
+        console.error('Error Error Deleting Student', error);
       },
     );
   });
