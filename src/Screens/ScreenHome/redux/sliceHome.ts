@@ -1,17 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { InitialStateHome } from '../Utils/typesHome';
+import { InitialStateHome, User } from '../Utils/typesHome';
 import { Student } from '../../../Utils/databaseTypes';
 
 const initialState: InitialStateHome = {
     isLoading: false,
-    studetns: [] as Student[],
+    studetns: [] as User[],
 };
 
 const sliceHome = createSlice({
   name: 'sliceHome',
   initialState,
   reducers: {
-    setStudents: (state, action: PayloadAction<Student[]>) => {
+    setStudents: (state, action: PayloadAction<User[]>) => {
         return {
             ...state,
             studetns: action.payload,
